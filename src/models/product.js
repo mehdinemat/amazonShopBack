@@ -21,7 +21,9 @@ const productSchema = new mongoose.Schema({
       userId:{type:mongoose.Types.ObjectId , ref:'user'},
       review:{type:String}
     }
-  ],
+  ],quantity:{
+    type:Number , required:true
+  },
   category:{type:mongoose.Types.ObjectId , ref:'category'},
   createdBy:{type:mongoose.Types.ObjectId , ref:'user'},
   updatedAt:Date,
