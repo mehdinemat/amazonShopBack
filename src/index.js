@@ -10,6 +10,7 @@ const authAdminRoutes = require('./routes/admin/user')
 const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
 const cartRoutes = require('./routes/cart')
+
 app.use(bodyParser.json())
 
 app.use('/public' , express.static(path.join(__dirname , 'uploads')))
