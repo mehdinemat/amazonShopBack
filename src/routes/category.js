@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const slugify = require('slugify')
+
+const {addCategory, getCategory} = require('../controllers/category')
+const {requireSignIn , adminMiddleWare} = require('../common-middleware/index')
 const multer = require('multer')
 const shortId = require('shortid')
 const path = require('path')
@@ -15,9 +18,6 @@ const storage = multer.diskStorage({
   }
 })
 const upload = multer({storage})
-
-const {addCategory, getCategory} = require('../controllers/category')
-const {requireSignIn , adminMiddleWare} = require('../common-middleware/index')
   router.post('/category/create' , requireSignIn , adminMiddleWare , upload.single('categoryImage') , addCategory )
   router.get('/category' , getCategory)
 module.exports = router

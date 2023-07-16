@@ -35,7 +35,7 @@ exports.addCategory =  async (req, res, next) => {
       categoryImage : categoryUrl
     }
     
-    console.log(req.file)
+    console.log(req.files)
     if(req?.file?.length > 0){
       console.log(req.file)
       categoryUrl = process.env.API +'/public/' + req.file.filename
