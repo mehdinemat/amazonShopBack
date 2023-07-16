@@ -5,18 +5,18 @@ const shortId = require('shortid')
 
 exports.createProduct = async(req,res)=>{
 
-  const { name , price ,description , productPicture , category , createdBy} = req.body
+  const { name , price ,description , productPicture , category , createdBy , quantity} = req.body
 
 const  productPictures = []
-
-  if(req.file.length > 0){
+  console.log(req)
+  if(req.files.length > 0){
     req.files.map((file)=>{
       return {img:file.filename}
     })
   }
 
   const product = new Product({
-    name , slug:slugify(name) , price , description , productPicture:productPictures , category , createdBy
+    name , slug:slugify(name) , price , description , productPicture:productPictures , category , createdBy , quantity
   })
 
   await product.save()
