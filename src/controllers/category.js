@@ -28,10 +28,21 @@ const createCategory = (categories , parentId = null)=>{
 exports.addCategory =  async (req, res, next) => {
 
   try{
+    let categoryUrl
     const categoryObj = {
       name: req.body.name,
-      slug: slugify(req.body.name)
+      slug: slugify(req.body.name),
+      categoryImage : categoryUrl
     }
+    
+    console.log(req.file)
+    if(req?.file?.length > 0){
+      console.log(req.file)
+      categoryUrl = process.env.API +'/public/' + req.file.filename
+      categoryObj.categoryImage =categoryUrl
+      console.log(req.file)
+    }
+
     if (req.body.parentId) {
       categoryObj.parentId = req.body.parentId
     }
