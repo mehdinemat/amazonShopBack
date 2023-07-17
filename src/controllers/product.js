@@ -7,13 +7,14 @@ exports.createProduct = async (req, res) => {
 
   const { name, price, description, productPicture, category, createdBy, quantity } = req.body
 
-  const productPictures = []
-  if (req.files.length > 0) {
-    productPictures.push(req.files.map((file) => {
+  let productPictures
+  console.log(req.files[0].filename , 'step one')
+  if (req.files) {
+    productPictures = req.files.map((file) => {
       return { img: file.filename }
-    }))
+    })
   }
-  console.log(productPictures)
+  console.log(productPictures , 'step two')
 
   const product = new Product({
     name, slug: slugify(name), price, description, productPicture: productPictures, category, createdBy, quantity
