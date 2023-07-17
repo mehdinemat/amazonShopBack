@@ -10,9 +10,10 @@ const authAdminRoutes = require('./routes/admin/user')
 const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
 const cartRoutes = require('./routes/cart')
+const cors = require('cors')
 
 app.use(express.json())
-
+app.use(cors())
 app.use('/public' , express.static(path.join(__dirname , 'uploads')))
 app.use('/api' , authRoutes)
 app.use('/api' , authAdminRoutes)
