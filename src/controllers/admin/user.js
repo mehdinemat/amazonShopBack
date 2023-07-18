@@ -56,3 +56,12 @@ exports.signin = async (req, res) => {
 
 }
 
+exports.signout = async(req,res)=>{
+  try{
+
+    res.clearCookie('token')
+    res.status(200).json({msg:'admin signout!'})
+
+  }catch(err){return res.status(400).json({msg:err.message})}
+}
+
