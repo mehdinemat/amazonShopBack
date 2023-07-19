@@ -25,7 +25,7 @@ const createCategory = (categories, parentId = null) => {
 
 }
 
-exports.addCategory = async (req, res, next) => {
+exports.  addCategory = async (req, res, next) => {
 
   try {
     let categoryUrl
