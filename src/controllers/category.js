@@ -17,6 +17,7 @@ const createCategory = (categories, parentId = null) => {
       id: cate._id,
       name: cate.name,
       slug: cate.slug,
+      parentId:cate.parentId,
       children: createCategory(categories, cate._id)
     })
   }
@@ -25,7 +26,7 @@ const createCategory = (categories, parentId = null) => {
 
 }
 
-exports.  addCategory = async (req, res, next) => {
+exports.addCategory = async (req, res, next) => {
 
   try {
     let categoryUrl
@@ -46,7 +47,7 @@ exports.  addCategory = async (req, res, next) => {
     const cat = new Category(categoryObj)
     await cat.save()
 
-    return res.status(201).json({ msg: 'valid' })
+    return res.status(201).json({ msg: 'valid'  , cat})
 
   } catch (err) { return res.status(201).json({ msg: err.message }) }
 
