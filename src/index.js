@@ -10,6 +10,7 @@ const authAdminRoutes = require('./routes/admin/user')
 const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
 const cartRoutes = require('./routes/cart')
+const initialData = require('./routes/admin/initialData')
 const cors = require('cors')
 
 app.use(express.json())
@@ -20,6 +21,7 @@ app.use('/api' , authAdminRoutes)
 app.use('/api' , categoryRoutes)
 app.use('/api' , productRoutes)
 app.use('/api' , cartRoutes)
+app.use('/api' , initialData)
 
 app.listen(process.env.PORT , ()=>{
   console.log('we are on port 2000')
