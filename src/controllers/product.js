@@ -24,3 +24,13 @@ exports.createProduct = async (req, res) => {
   res.status(200).json({ file: req.file, body: req.body })
 
 }
+exports.getProducts = async(req,res)=>{
+
+  try{
+
+    const productList = await Product.find({})
+    return res.status(200).json({productList})
+
+  }catch(err){return res.status(500).json({msg:err.message})}
+
+}

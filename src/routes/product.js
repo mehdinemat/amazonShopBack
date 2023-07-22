@@ -2,7 +2,7 @@ const express = require('express')
 const { requireSignIn, adminMiddleWare } = require('../common-middleware')
 const multer = require('multer')
 const router = express.Router()
-const {createProduct} = require('../controllers/product')
+const {createProduct, getProducts} = require('../controllers/product')
 const shortId = require('shortid')
 const path = require('path')
 
@@ -19,6 +19,6 @@ const upload = multer({storage})
 
 
   router.post('/product/create' , requireSignIn , adminMiddleWare , upload.array('productPicture') , createProduct)
-
+  router.get('/product' , getProducts )
 
 module.exports = router
