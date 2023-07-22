@@ -6,7 +6,7 @@ const shortId = require('shortid')
 exports.createProduct = async (req, res) => {
 
   const { name, price, description, productPicture, category, createdBy, quantity } = req.body
-
+  console.log(name, price, description, productPicture, category, createdBy, quantity)
   let productPictures
   if (req.files) {
     productPictures = req.files.map((file) => {
