@@ -8,7 +8,6 @@ exports.createProduct = async (req, res) => {
   const { name, price, description, productPicture, category, createdBy, quantity } = req.body
 
   let productPictures
-  console.log(req.files[0].filename , 'step one')
   if (req.files) {
     productPictures = req.files.map((file) => {
       return { img: file.filename }
