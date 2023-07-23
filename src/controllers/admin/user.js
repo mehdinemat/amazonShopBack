@@ -1,6 +1,6 @@
 const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
-
+const shortid = require('shortid')
 exports.signup = async (req, res) => {
 
   try {
@@ -8,7 +8,7 @@ exports.signup = async (req, res) => {
 
     if (!user) {
       const { firstName, lastName, email, password } = req.body
-      const _user = new User({ firstName, lastName, email, password, userName: Math.random().toString() })
+      const _user = new User({ firstName, lastName, email, password, userName: shortid.generate() })
       const result = await _user.save()
 
       if (!result) {
