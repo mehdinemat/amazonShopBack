@@ -42,7 +42,7 @@ exports.getProductBySlug = async (req, res) => {
     const category = await Category.findOne({ slug: slug }).select('_id')
 
     if (!category) {
-      return res.statue(500).json({ msg: 'product with this category not found !' })
+      return res.status(500).json({ msg: 'product with this category not found !' })
     }
     const product = await Product.find({ category: category._id })
 
