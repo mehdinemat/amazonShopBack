@@ -48,11 +48,11 @@ exports.getProductBySlug = async (req, res) => {
 
     return res.status(200).json({
       product, productByPrice: [
-        { ...product.filter((item) => (item.price < 500000)) , title:'under500000' }
-        , {...product.filter((item) => (item.price < 1000000 && item.price >= 500000)) , title:'under1000000' }
-        , { ...product.filter((item) => (item.price < 5000000 && item.price >= 1000000)) , title:'under5000000' },
-        { ...product.filter((item) => (item.price < 10000000 && item.price >= 5000000)) , title:'under10000000' },
-        { ...product.filter((item) => (item.price < 20000000 && item.price >= 10000000)) , title:'under20000000' }
+        { ...[product.filter((item) => (item.price < 500000))] , title:'under500000' }
+        , {...[product.filter((item) => (item.price < 1000000 && item.price >= 500000))] , title:'under1000000' }
+        , { ...[product.filter((item) => (item.price < 5000000 && item.price >= 1000000))] , title:'under5000000' },
+        { ...[product.filter((item) => (item.price < 10000000 && item.price >= 5000000))] , title:'under10000000' },
+        { ...[product.filter((item) => (item.price < 20000000 && item.price >= 10000000))] , title:'under20000000' }
       
     ]})
 

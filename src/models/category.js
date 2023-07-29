@@ -11,7 +11,8 @@ const categorySchema = new mongoose.Schema({
       ,
       parentId:{
         type:String
-      }
+      },
+      type:String,
 } , {timestamps:true})
 
 module.exports = mongoose.model('category' , categorySchema)
